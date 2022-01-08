@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TrashIcon } from "@heroicons/react/outline";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Cart() {
