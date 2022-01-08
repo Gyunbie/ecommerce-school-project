@@ -1,11 +1,9 @@
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Header() {
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")) || {}
-  );
+  const [cart] = useState(JSON.parse(localStorage.getItem("cart")) || {});
 
   return (
     <div className="flex items-center h-[60px] shadow-md w-full">
