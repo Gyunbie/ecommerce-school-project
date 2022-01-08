@@ -22,11 +22,14 @@ function Product({ image_url, name, price, stock, cart, setCart, product }) {
   return (
     <Link
       to={`products/${product.index}`}
-      className="p-3 m-1 flex flex-col items-center border border-gray-300 rounded-md relative h-[365px] w-[300px]"
+      className="p-3 m-1 flex flex-col items-center border border-gray-300 hover:border-black duration-150 ease-in rounded-md relative h-[365px] w-[300px]"
     >
       <StarIcon
         className="h-6 w-6 absolute top-3 right-3 text-yellow-500 cursor-pointer"
-        onClick={no_implementation}
+        onClick={(e) => {
+          e.preventDefault();
+          no_implementation();
+        }}
       />
       <img className="px-3 py-1 h-full w-auto" src={image_url} alt="" />
 
