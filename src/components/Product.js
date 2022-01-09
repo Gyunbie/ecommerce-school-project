@@ -1,4 +1,4 @@
-import { ShoppingCartIcon, StarIcon } from "@heroicons/react/outline";
+import { ShoppingCartIcon, StarIcon, BanIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
 function Product({ image_url, name, price, stock, cart, setCart, product }) {
@@ -16,7 +16,8 @@ function Product({ image_url, name, price, stock, cart, setCart, product }) {
     }
     await setCart(temp_cart);
     localStorage.setItem("cart", JSON.stringify(temp_cart));
-    window.alert(`"${item.name}" added to cart!`);
+    window.location.reload();
+    return false;
   };
 
   return (
@@ -37,7 +38,7 @@ function Product({ image_url, name, price, stock, cart, setCart, product }) {
 
       <div className="w-full flex items-center justify-between">
         <h1 className="text-xl bg-b flex flex-col items-center bg-green-200 px-1.5 pr-2 py-1 rounded-md pointer-events-none">
-          ${price}
+          ${price.toFixed(2)}
           <p className="text-xs text-gray-500">{stock} left</p>
         </h1>
         <button
@@ -52,7 +53,17 @@ function Product({ image_url, name, price, stock, cart, setCart, product }) {
             addToCart(product);
           }}
         >
-          <ShoppingCartIcon className="h-5 w-5 mr-0.5" />
+          {stock > 0 ? (
+            <ShoppingCartIcon
+              className="h-5 w-5 mr-0.5"
+              onClick={(e) => e.preventDefault()}
+            />
+          ) : (
+            <BanIcon
+              className="h-5 w-5 mr-0.5"
+              onClick={(e) => e.preventDefault()}
+            />
+          )}
           {stock > 0 ? "Add to cart" : "Out of stock"}
         </button>
       </div>

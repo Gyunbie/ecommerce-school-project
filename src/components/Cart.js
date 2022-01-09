@@ -15,13 +15,22 @@ function Cart() {
     setTotal(price_tracker);
   }, [price_tracker]);
 
-  const handleDelete = (key) => {
+  const handleDelete = (key, itemName) => {
     const temp_cart = { ...cart };
 
-    delete temp_cart[key];
+    const confirmation = window.confirm(
+      `Are you sure you want to delete this:\n\t ${itemName}?`
+    );
 
-    setCart(temp_cart);
-    localStorage.setItem("cart", JSON.stringify(temp_cart));
+    if (confirmation) {
+      delete temp_cart[key];
+
+      setCart(temp_cart);
+      localStorage.setItem("cart", JSON.stringify(temp_cart));
+
+      window.location.reload();
+      return false;
+    }
   };
 
   return (
@@ -31,7 +40,9 @@ function Cart() {
           <p className="absolute left-0 right-0 top-0.5 text-center text-[8px] font-semibold">
             General Total
           </p>
-          <p className="mt-1 p-1 text-lg text-green-500 font-bold">${total}</p>
+          <p className="mt-1 p-1 text-lg text-green-500 font-bold">
+            ${total.toFixed(2)}
+          </p>
         </div>
 
         <input
@@ -50,7 +61,7 @@ function Cart() {
 
       {Object.keys(cart).map((item, index) => {
         const cart_key = JSON.parse(item);
-        price_tracker += cart_key.price;
+        price_tracker += cart_key.price * cart[item];
 
         return (
           <Link
@@ -70,7 +81,7 @@ function Cart() {
                   Amount
                 </p>
                 <p className="mt-1 p-1 mx-1 text-lg text-green-500 font-bold">
-                  ${cart[item]}x
+                  {cart[item]}x
                 </p>
               </div>
               <div className="bg-gray-200 rounded-md relative">
@@ -87,7 +98,7 @@ function Cart() {
                   className="h-7 w-7 self-end ml-auto p-0.5 bg-red-600 rounded-md cursor-pointer hover:bg-red-500 text-white duration-150 ease-out"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleDelete(item);
+                    handleDelete(item, cart_key["name"]);
                   }}
                 />
               </div>
