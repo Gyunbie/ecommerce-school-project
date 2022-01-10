@@ -15,6 +15,10 @@ function Cart() {
     setTotal(price_tracker);
   }, [price_tracker]);
 
+  const no_implementation = () => {
+    window.alert("This has not been implemented yet.");
+  };
+
   const handleDelete = (key, itemName) => {
     const temp_cart = { ...cart };
 
@@ -35,7 +39,7 @@ function Cart() {
 
   return (
     <div className="w-4/5 mx-auto p-3 m-3 border border-gray-300 rounded-md">
-      <div className="w-3/4 mx-auto flex items-center border border-gray-300 rounded-md py-3">
+      <div className="w-5/6 mx-auto flex items-center border border-gray-300 rounded-md py-3">
         <div className="bg-gray-200 rounded-md relative mx-3">
           <p className="absolute left-0 right-0 top-0.5 text-center text-[8px] font-semibold">
             General Total
@@ -66,7 +70,7 @@ function Cart() {
         return (
           <Link
             to={`/products/${cart_key.index}`}
-            className="flex w-3/4 mx-auto border border-gray-300 rounded-lg my-3 px-1.5 py-1.5"
+            className="flex w-5/6 mx-auto border border-gray-300 rounded-lg my-3 px-1.5 py-1.5"
             key={index}
           >
             <img
@@ -106,6 +110,21 @@ function Cart() {
           </Link>
         );
       })}
+      <div className="w-5/6 mx-auto flex items-center border border-gray-300 rounded-md py-3 mt-5">
+        <input
+          type="text"
+          placeholder="Enter your coupon code... (Not implemented)"
+          className="outline-none ring-1 ring-blue-300 rounded-md px-2 h-9 mx-3 flex-grow cursor-not-allowed"
+          disabled
+        />
+
+        <button
+          className="bg-blue-500 p-1.5 rounded-md mr-3 ml-3 text-white hover:bg-blue-400 duration-150 ease-out"
+          onClick={no_implementation}
+        >
+          Checkout
+        </button>
+      </div>
     </div>
   );
 }
