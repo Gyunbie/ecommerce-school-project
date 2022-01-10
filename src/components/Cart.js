@@ -15,7 +15,7 @@ function Cart() {
     setTotal(price_tracker);
   }, [price_tracker]);
 
-  const no_implementation = () => {
+  const confirm_order = () => {
     window.alert("This has not been implemented yet.");
   };
 
@@ -120,7 +120,7 @@ function Cart() {
 
         <button
           className="bg-blue-500 p-1.5 rounded-md mr-3 ml-3 text-white hover:bg-blue-400 duration-150 ease-out"
-          onClick={no_implementation}
+          onClick={confirm_order}
         >
           Checkout
         </button>
