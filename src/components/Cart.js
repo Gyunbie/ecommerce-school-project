@@ -17,8 +17,6 @@ function Cart() {
 
   const confirm_order = () => {
     window.alert("Checkout successful!");
-    setCart({});
-    localStorage.setItem("cart", {});
   };
 
   const handleDelete = (key, itemName) => {
