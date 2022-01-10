@@ -22,7 +22,7 @@ function Product({ image_url, name, price, stock, cart, setCart, product }) {
 
   return (
     <Link
-      to={`products/${product.index}`}
+      to={`/products/${product.index}`}
       className="p-3 m-1 flex flex-col items-center border border-gray-300 hover:border-black duration-150 ease-in rounded-md relative h-[365px] w-[300px]"
     >
       <StarIcon
