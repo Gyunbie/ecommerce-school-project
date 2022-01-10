@@ -16,7 +16,9 @@ function Cart() {
   }, [price_tracker]);
 
   const confirm_order = () => {
-    window.alert("This has not been implemented yet.");
+    window.alert("Checkout successful!");
+    setCart({});
+    localStorage.setItem("cart", {});
   };
 
   const handleDelete = (key, itemName) => {
